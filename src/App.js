@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import data from './intro';
 import Banana from './Banana';
+import axios from 'axios';
 
 class App extends Component {
 
@@ -21,6 +22,21 @@ class App extends Component {
     );
   }
 }
+
+axios.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fatlanta.craigslist.org%2Fsearch%2Fvga%3Fformat%3Drss')
+.then(function(response) {
+  console.log("Working");
+  console.log(response);
+  console.log(response.request.responseText)
+  var newResponse = JSON.parse(response.request.responseText);
+  // console.log(newResponse);
+  var singleItem = newResponse.items[1];
+  console.log(singleItem);
+  console.log(singleItem.title);
+  console.log(singleItem.link);
+}).catch((err) => {
+  console.log(`Not working ${err}`)
+});
 
 
 
