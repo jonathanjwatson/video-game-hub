@@ -24,6 +24,8 @@ class App extends Component {
 
 
 
-
+window.onload = function() {
+  console.log("This is working")
+};
 
 export default App;
